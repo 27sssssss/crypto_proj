@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="retro.css">
+    <title>Crypto Data123</title>
+    <style>
+        .grid-container {
+            display: flex;
+        }
+        .parameters{
+            display: flex;
+            gap: 1px;
+            font-weight: lighter;
+        }
+        h1{
+            text-align: center;
+            font-weight: 600;
+        }
+        h2{
+            text-align:center;
+            font-weight: 600;
+            color: black;
+        }
+        .buttonObl {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .buttonObl button {
+            margin-bottom: 10px;
+            width: 48%;
+        }
+        .red-row {
+            background-color:rgb(59, 23, 23);
+            color: white;
+    }
+        .black-row{
+            background-color: rgb(9, 48, 9);
+            color:white;
+    }
+    .casual-row{
+        background-color: #161f27;
+        color:white;
+    }
+    .light-theme {
+        background-color: #fcfafa;
+        color: #222;
+    }
+    .dark-theme {
+        background-color: #222;
+        color: #e4d7d7;
+    }
+    .blackHeader h1{
+        color:black;
+    }
+
+    </style>
+</head>
+<body>
+    <h2>Параметры устройств</h2>
+    <div id="buttonObl"></div>
+    <div id="additionaldata"></div>
+    <div id="deviceCont"></div>
+    <h2>Текущие параметры установок</h2>
+    <div id="parameters"></div>
+    <button id="theme-change">Смена фона</button>
+    
+    <script>
+        const themeToggleBtn = document.getElementById('theme-change');
+        themeToggleBtn.addEventListener('click', function() {
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            const headers = document.querySelectorAll('h1, h2');
+            headers.forEach(header => {
+                header.classList.toggle('blackHeader');
+        });
+        });
+        dataDisplay();
+        parameters123();
+        setInterval(dataDisplay, 300000);
+        setInterval(parameters123, 30000);
+        async function dataDisplay() {
+            try {
+                let redColor = 0;
+                const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+                const data = await reply.json();
+                const container123 = document.getElementById('deviceCont');
+                const table = document.createElement('table');
+                const tableHead = document.createElement('thead');
+                const headerR = document.createElement('tr');
+                headerR.innerHTML = `
+                    <th>Устройство</th>
+                    <th>HashRate</th>
+                    <th>Мощность(W)</th>
+                    <th>Accepted Shares</th>
+                    <th>Rejected Shares</th>`;
+                tableHead.appendChild(headerR);
+                table.appendChild(tableHead);
+                const tableBody = document.createElement('tbody');
+                for (let deviceName in data) {
+                    const deviceData = data[deviceName];
+                        const deviceRow = document.createElement('tr');
+
+                        deviceRow.innerHTML = `
+                            <td>${deviceName}</td>
+                            <td>${deviceData.mining && deviceData.mining.hashrate ? deviceData.mining.hashrate.hashrate : 'N/A'}</td>
+                            <td>${deviceData.hardware 
+                                ? deviceData.hardware.reduce((total = 0, hardware) => {
+                                    return total + (hardware.power || 0);
+                                }, 0)
+                                : '...'}</td>
+                            <td>${deviceData.mining && deviceData.mining.shares ? deviceData.mining.shares.accepted_share : 'N/A'}</td>
+                            <td>${deviceData.mining && deviceData.mining.shares ? deviceData.mining.shares.rejected_share : 'N/A'}</td>
+                        `;
+                        if (deviceData.info.status === 'offline' || deviceData.mining.shares.accepted_share === 0 || deviceData.hardware.reduce((total = 0, hardware) => {
+                                    return total + (hardware.power || 0);
+                                }, 0) === 0){
+                            deviceRow.classList.add('red-row');
+                        }
+                        else {
+                            deviceRow.classList.add('black-row');
+                        }
+                        tableBody.appendChild(deviceRow);
+                        console.log(deviceData.info.status);
+                }
+                
+                table.appendChild(tableBody);
+                container123.innerHTML = '';
+                container123.appendChild(table);
+                buttonCont(data);
+            } catch (error) {
+                console.error('Ошибка вывода данных', error);
+            }
+        }
+
+    async function parameters123() {
+        reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+        data = await reply.json();
+        parameters = document.getElementById('parameters');
+        const table = document.createElement('table');
+        const tableHead = document.createElement('thead');
+        const headerR = document.createElement('tr');
+        headerR.innerHTML = `
+            <th>Устройство</th>
+            <th>Дневной доход (BTC)</th>
+            <th>Недельный доход (BTC)</th>
+            <th>Месячный доход (BTC)</th>
+        `;
+        tableHead.appendChild(headerR);
+        table.appendChild(tableHead);
+        const tableBody = document.createElement('tbody');
+        for (let deviceName in data) {
+            const deviceData = data[deviceName];
+                const deviceRow = document.createElement('tr');
+                deviceRow.innerHTML = `
+                    <td>${deviceName}</td>
+                    <td>${deviceData.revenue ? deviceData.revenue.btc_day : 'N/A'}</td>
+                    <td>${deviceData.revenue ? deviceData.revenue.btc_week : 'N/A'}</td>
+                    <td>${deviceData.revenue ? deviceData.revenue.btc_month : 'N/A'}</td>
+                `;
+            deviceRow.classList.add('casual-row');
+            tableBody.appendChild(deviceRow);
+        }
+        table.appendChild(tableBody);
+        parameters.innerHTML = '';
+        parameters.appendChild(table);
+    }
+
+    function buttonCont(data) {
+    const toggleButtonsContainer = document.getElementById('buttonObl');
+    toggleButtonsContainer.classList.add('buttonObl');
+    if (toggleButtonsContainer.children.length === 0) {
+        for (let deviceName in data) {
+            const deviceData = data[deviceName];
+                const toggleButton = document.createElement('button');
+                toggleButton.textContent = deviceName;
+                toggleButton.onclick = function () {
+                    addData123(deviceName);
+                };
+                toggleButtonsContainer.appendChild(toggleButton);
+                const additionalDataContainer = document.createElement('div');
+                additionalDataContainer.id = deviceName;
+                additionalDataContainer.classList.add('additional-data123');
+                toggleButtonsContainer.appendChild(additionalDataContainer);
+        }
+    }
+}
+        async function addData123(device1123) {
+            const additionalData = document.getElementById("additionaldata");
+            reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+            data = await reply.json();
+            const device = data[device1123];
+            if (device) {
+                const table = document.createElement('table');
+                const tableHead = document.createElement('thead');
+                const headerR = document.createElement('tr');
+                const tableBody = document.createElement('tbody');
+                headerR.innerHTML = `
+                    <th>Название</th>
+                    <th>Температура 1</th>
+                    <th>Температура 2</th>
+                    <th>Оборот Вент.</th>
+                    <th>Скорость</th>
+                    <th>Мощность</th>
+                `;
+                tableHead.appendChild(headerR);
+                table.appendChild(tableHead);
+                if (device.hardware) {
+                    device.hardware.forEach(hardwareData => {
+                        const hardwareRow = document.createElement('tr');
+                        hardwareRow.innerHTML = `
+                            <td>${hardwareData.name}</td>
+                            <td>${hardwareData.temp || '...'}</td>
+                            <td>${hardwareData.temp2 || '...'}</td>
+                            <td>${hardwareData.fan || '...'}</td>
+                            <td>${hardwareData.speed || '...'}</td>
+                            <td>${hardwareData.power || '...'}</td>
+                        `;
+                        hardwareRow.classList.add('casual-row');
+                        tableBody.appendChild(hardwareRow);
+                    });
+                }
+                table.appendChild(tableBody);
+                additionalData.innerHTML = ``;
+                additionalData.appendChild(table);
+            } else {
+                additionalData.innerHTML = 'Ошибка устройство не найдено';
+            }
+        }
+    </script>
+</body>
+</html>
+
