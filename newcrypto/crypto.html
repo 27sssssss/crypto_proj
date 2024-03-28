@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body {
+    background-color: rgb(12, 12, 12);
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+
+.header-wrapper {
+    margin-left: 40px;
+}
+
+.settings{
+    font-size: 20px;
+    font-weight: 100;
+    color: #2CBD77;
+}
+
+.greenrec{
+    width: 88px;
+    height: 5px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background: #2CBD77;
+    border-top-left-radius: 6px; 
+    border-top-right-radius: 6px;
+}
+
+th {
+    padding: 13px 5px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+    padding-right: 20px;
+    font-size: 20px;
+    font-family: Century Gothic;
+    font-weight: 800;
+    color: #D1D1D1;
+    text-align: left;
+}
+
+
+td {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+    padding-right: 30px;
+    font-size: 20px;
+    font-family: Century Gothic;
+    font-weight: 800;
+    color: rgb(242, 240, 240);
+    text-align: center;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 25px;
+    font-family: Century Gothic;
+    font-weight: 700;
+    color: white;
+}
+
+.totaldata {
+    display: inline-flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.totaldata div {
+    margin: 5px;
+    width: 230px;
+    height: 40px;
+    display: inline-flex;
+    background-color: #2E2E2E;
+    color: white;
+    border-radius: 35px;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    position: relative;
+    align-items: center;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ltc {
+    font-weight: 50;
+    font-family: Century Gothic;
+}
+
+.card {
+    background-color: #202020;
+    color: white;
+    margin: 11px;
+    width: 88px;
+    height: 88px;
+    border-radius: 15px;
+    border: 1px solid #202020;
+    text-align: left;
+}
+.card-wrapper {
+    margin-top: -20px;
+    gap: 0px;
+    margin-left: -20px;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 10px;
+}
+
+.card h2 {
+    font-size: 16px;
+    margin-top: 0px;
+    text-align: center;
+    margin-right: 10px;
+}
+.cardheader{
+    color: white; 
+    font-size: 16px; 
+    font-family: Century Gothic; 
+    font-weight: 700; 
+}
+.cardghz{
+    opacity: 0.80;
+    color: #D1D1D1;
+    font-size: 10px;
+    font-family: Century Gothic;
+    font-weight: 50;
+}
+.celcius{
+    padding-left: 10px;
+}
+
+.greenline{
+    width: 86px;
+    height: 4px; 
+    background: #2CBD77; 
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px;
+    margin-top: 1px;
+    margin-bottom: 5px;
+}
+.whiteline{
+    margin-top: -12px;
+    margin-left: 9px;
+    width: 67px;
+    height: 0px; 
+    border: 0.5px white solid
+}
+</style>
+<body>
+    <div class="container">
+    <h1>Параметры установок</h1>
+    <div id= "totaldata">
+        <div style="width: 240px;" id="ghs">
+            <img style= "margin-left: 7px;  width: 40px;" src="files123/2847001.png" alt="">
+            <div id="ghscount" style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 700;
+            "></div>
+            <div>
+                <p style="margin-top:3px; margin-left: -13px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: 50;">
+                    Gh/s
+                </p>
+                <p style="margin-bottom:-5px;  margin-left: -25px; color: #D1D1D1; font-size: 10px; font-family: Century Gothic; font-weight: 400;">
+                    LTC
+                </p>
+            </div>
+        </div>
+        <div style="width: 165px;" id="wat">
+            <img style="margin-left: 3px; margin-top: 1px; width: 28px" src="files123/plug.png" alt="">
+            <div id="watcount" style="font-weight: 800; margin-left: -3px;text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 800"></div>
+            <div>
+                <p style="margin-left: -10px; margin-top:1px; text-decoration: underline; text-align: left; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: lighter;">
+                    KW
+                </p>
+                <p style=" margin-bottom: -6px; margin-left: -26px; color: white; font-size: 8px; font-family: Century Gothic; font-weight: 400;">
+                    POWER
+                </p>
+            </div>
+        </div>
+        <div style="width: 170px;" id="usd">
+            <img style=" margin-bottom: -3px ;margin-left: 9px; width: 25px; margin-top: -5px;" src="files123/wallet.png" alt="">
+            <div style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 800" id="usdcount"></div>
+            <div>
+                <p style="margin-left: -10px;  margin-top:3px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: 400;">
+                    USD
+                </p>
+                <p style="margin-bottom:0.5px;  margin-left: -28px; color:#D1D1D1; font-size: 12px; font-family: Century Gothic; font-weight: 400;">
+                    день
+                </p>
+            </div>
+        </div>
+        <div style="width: 180px" id="devices">
+            <img style="margin-left:10px; width: 25px; color: white;" src="files123/pickaxe.png" alt="">
+            <div style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 800" id="devicescount"></div>
+            <div>
+                <p style="margin-left: -20px; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: 400;">
+                    MINING
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="Rectangle7" style="width: 900px; height: 55px; left: 0px; top: 1px;  background: #2E2E2E; border-top-left-radius: 51px; border-top-right-radius: 51px">
+    <div id = "TableData"></div>
+    </div>
+    </div>
+</div>
+    <script>
+        showalldata();       
+        fulltable(); 
+        async function showalldata(){
+        try{
+        const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+        const data = await reply.json();
+        const showData = document.getElementById("totaldata");
+        showData.classList.add("totaldata");
+        let totalHrate = 0;
+        let totalPower = 0;
+        let totalUsd = 0;
+        let totalCount = 0;
+        let workingCount = 0;
+        for (let deviceName in data){
+            totalCount += 1;
+            const deviceData = data[deviceName];
+            let Hrate = deviceData.mining && deviceData.mining.hashrate ? deviceData.mining.hashrate.hashrate : 0;
+            let Power = deviceData.hardware ? deviceData.hardware.reduce((total = 0, hardware) => {return total + (hardware.power || 0);}, 0): 0;
+            let Usd  = deviceData.revenue ? deviceData.revenue.usd_day : 0;
+            totalHrate += Hrate;
+            totalPower += Power;
+            totalUsd += Usd;
+            if (Usd !== 0 && Hrate !== 0 && Power !== 0){
+                workingCount += 1;
+            }
+        }
+        document.getElementById("ghscount").textContent = totalHrate.toFixed(1);
+        document.getElementById("watcount").textContent = `${totalPower}`;
+        document.getElementById("usdcount").textContent = `${totalUsd.toFixed(2)}`;
+        document.getElementById("devicescount").textContent = `${workingCount}/${totalCount}`;
+    }
+    catch (error) {
+        console.error('Ошибка вывода данных', error);
+    }
+}
+        async function fulltable(){
+            try {
+            const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+            const data = await reply.json();
+            const tableData = document.getElementById('TableData');
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+            const headRow = document.createElement('tr');
+            headRow.innerHTML = `
+            <th>Воркер</div></th>
+            <th>Майнинг</div></th>
+            <th>Макс Темп</div></th>
+            <th>Макс Вент</div></th>
+            <th>Мощность</div></th>
+            `;
+            thead.appendChild(headRow);
+            table.appendChild(thead);
+            const tableBody = document.createElement('tbody');
+            for (let deviceName in data) {
+            const deviceData = data[deviceName];
+            let mintemp = minTemp(deviceData.hardware);
+            let maxtemp = maxTemp(deviceData.hardware);
+            let maxvent = maxVent(deviceData.hardware);
+            let Hrate = deviceData.mining && deviceData.mining.hashrate ? deviceData.mining.hashrate.hashrate : 0;
+            const deviceRow = document.createElement('tr');
+            deviceRow.innerHTML = `
+                <td style="">${deviceName}</td>
+                <td>${Hrate}<span class="settings"> GH/z</span></td>
+                <td>${mintemp} °C - ${maxtemp} °C</td>
+                <td>${maxvent} <span class="settings">RPM</span></td>
+                <td>${totalPower(deviceData)} <span class="settings"> W</span></td>`;
+            tableBody.appendChild(deviceRow);
+            if (deviceData.hardware) {
+        const cardWrapper = document.createElement('div');
+        cardWrapper.classList.add('card-wrapper');
+        for (let antminer of deviceData.hardware) {
+            const card = makeCard(antminer);
+            cardWrapper.appendChild(card);
+        }
+        const cardRow = document.createElement('tr');
+        const cardCell = document.createElement('td');
+        cardCell.colSpan = 5;
+        cardCell.appendChild(cardWrapper);
+        cardRow.appendChild(cardCell);
+        tableBody.appendChild(cardRow);
+    }
+        }
+
+        table.appendChild(tableBody);
+        tableData.innerHTML = '';
+        tableData.appendChild(table);
+    } catch (error) {
+        console.error('Ошибка вывода таблицы', error);
+    }
+}
+
+        function minTemp(data){
+            let minTemp = 0;
+            for (hardwareName in data){
+                hardwareData = data[hardwareName];
+                if (hardwareData.temp !== undefined && hardwareData.temp > minTemp){
+                    minTemp = hardwareData.temp;
+                }
+            }
+            return minTemp;
+        }
+        function maxTemp(data){
+            let maxTemp = 0;
+            for (hardwareName in data){
+                hardwareData = data[hardwareName];
+                if (hardwareData.temp2 !== undefined && hardwareData.temp2 > maxTemp){
+                    maxTemp = hardwareData.temp2;
+                }
+            }
+            return maxTemp;
+        }
+        function maxVent(data){
+            let maxVent = 0;
+            for (hardwareName in data){
+                hardwareData = data[hardwareName];
+                if (hardwareData.fan !== undefined && hardwareData.fan > maxVent){
+                    maxVent = hardwareData.fan;
+                }
+            }
+            return maxVent;
+        }
+        function totalPower(deviceData){
+            return deviceData.hardware ? deviceData.hardware.reduce((total, hardware) => {
+            return total + (hardware.power || 0);
+        }, 0)
+        : 0;
+        }
+    function makeCard(data){
+        let card = document.createElement("div");
+        card.classList.add("card");
+        let greenchop = document.createElement("div");
+        greenchop.classList.add("greenline");
+        card.appendChild(greenchop);
+        let title = document.createElement("h2");
+        title.classList.add("card-title");
+        card.appendChild(title);
+        let speedUnit = document.createElement("span");
+        speedUnit.textContent = " Gh/z";
+        speedUnit.classList.add("cardghz");
+        if (data.speed !== undefined) {
+            let speedValue = document.createElement("span");
+            speedValue.textContent = data.speed.toFixed(0);
+            title.appendChild(speedValue);
+            title.appendChild(speedUnit);
+        } else {
+            title.textContent = ' - ';
+            title.appendChild(speedUnit);
+        }
+
+        let whiteline = document.createElement("div");
+        whiteline.classList.add("whiteline");
+        card.appendChild(whiteline);
+        let temperature = document.createElement("p");
+        temperature.classList.add("celcius");
+        temperature.innerHTML = 
+        data.temp !== undefined && data.temp2 !== undefined
+            ? `${data.temp} <span class="cardghz">°C</span> - ${data.temp2} <span class="cardghz">°C</span>`
+            : data.temp !== undefined
+            ? `${data.temp} <span class="cardghz">°C</span> - -`
+            : data.temp2 !== undefined
+            ? `- - ${data.temp2} <span class="cardghz">°C</span>`
+            : '-<span class="cardghz">°C</span> -<span class="cardghz">°C</span>';
+        card.appendChild(temperature);
+        let rpm = document.createElement("p");
+        rpm.classList.add("celcius");
+        rpm.innerHTML = data.fan !== undefined ? `${data.fan} <span class="cardghz">RPM</span>` : '-';
+        card.appendChild(rpm);
+        let wat = document.createElement("p");
+        wat.classList.add("celcius");
+        wat.innerHTML = data.power !== undefined ? `${data.power} <span class="cardghz">W</span>` : '-';
+        card.appendChild(wat);
+        return card;
+    }
+
+    </script>
+</body>
+</html>
