@@ -224,8 +224,8 @@ h1 {
     </div>
 </div>
     <script>
-        showalldata();       
-        fulltable(); 
+        setInterval(showalldata(),50000);
+        setInterval(fulltable(),50000);  
         async function showalldata(){
         try{
         const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
@@ -286,7 +286,7 @@ h1 {
             const deviceRow = document.createElement('tr');
             deviceRow.innerHTML = `
                 <td style="">${deviceName}</td>
-                <td>${Hrate}<span class="settings"> GH/z</span></td>
+                <td>${Hrate.toFixed(1)}<span class="settings"> GH/z</span></td>
                 <td>${mintemp} °C - ${maxtemp} °C</td>
                 <td>${maxvent} <span class="settings">RPM</span></td>
                 <td>${totalPower(deviceData)} <span class="settings"> W</span></td>`;
