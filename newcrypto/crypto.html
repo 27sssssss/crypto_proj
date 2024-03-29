@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -16,7 +16,17 @@ body {
     display: flex;
 }
 
+@font-face {
+        font-family: 'Century Gothic';
+        src: url('/files123/CENTURYGOTHIC.TTF') format('truetype');
+        font-weight: normal;
+}
 
+@font-face {
+        font-family: 'Century Gothic';
+        src: url('/files123/CENTURYGOTHIC_BOLD.TTF') format('truetype');
+        font-weight: bold;
+    }
 .header-wrapper {
     margin-left: 40px;
 }
@@ -40,7 +50,7 @@ body {
 
 th {
     padding: 13px 5px;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
     padding-left: 40px;
     padding-right: 20px;
     font-size: 20px;
@@ -50,7 +60,28 @@ th {
     text-align: left;
 }
 
+table {
+    background-color: #0F0F0F;
+    margin-left: 25px;
+    border-radius: 51px; 
+    border-collapse: collapse;
+    margin-bottom:30px;
+}
 
+thead {
+    height: 40px;
+    background-color: #2E2E2E;
+    border-top-left-radius: 51px;
+    border-top-right-radius: 51px;
+}
+
+thead th:first-child {
+    border-top-left-radius: 51px; 
+}
+
+thead th:last-child {
+    border-top-right-radius: 51px; 
+}
 td {
     padding-top: 20px;
     padding-bottom: 0px;
@@ -72,6 +103,30 @@ h1 {
     color: white;
 }
 
+.timebutton{
+    text-align: left;
+    margin-left: 80px ;
+    background: #2E2E2E;
+    border-radius: 35px;
+    height: 67px;
+    width: 430px;
+    color: rgba(255, 255, 255, 0.80); 
+    font-size: 20px; 
+    font-family: Century Gothic; 
+    font-weight: 700;
+}
+.timebutton2{
+    background: #202020;
+    height: 67px;
+    width: 380px;
+    color: rgba(254, 254, 254, 0.8);
+    font-family: Century Gothic;
+    font-size: 20px; 
+    margin-left: 450px;
+    border-radius: 35px;
+    margin-top: -88px;
+    font-weight: 800px;
+}
 .totaldata {
     display: inline-flex;
     gap: 10px;
@@ -93,7 +148,7 @@ h1 {
     align-items: center;
 }
 .container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -218,14 +273,20 @@ h1 {
             </div>
         </div>
     </div>
-    <div class="Rectangle7" style="width: 900px; height: 55px; left: 0px; top: 1px;  background: #2E2E2E; border-top-left-radius: 51px; border-top-right-radius: 51px">
     <div id = "TableData"></div>
+    <div class="timebutton">
+        <p style="padding-top: 20px; padding-left: 40px;" >Последнее время обновления:</p>
     </div>
+    <div style="margin-top: -67px" class="timebutton2">
+        <img style= "margin-bottom: -33px; margin-left: 20px;  width: 40px;" src="files123/clock.png" alt="">
+        <p id="timep" style="font-size: 25px; text-align: center; margin-top: -6px"></p>
     </div>
 </div>
+
     <script>
+        setInterval(getTime,1000);
         setInterval(showalldata(),50000);
-        setInterval(fulltable(),50000);  
+        setInterval(fulltable(),50000); 
         async function showalldata(){
         try{
         const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
@@ -397,7 +458,19 @@ h1 {
         card.appendChild(wat);
         return card;
     }
-
+    async function getTime() {
+    try {
+        const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+        const data = await reply.json();
+        const timeBlock = document.getElementById('timep');
+        if (timeBlock){
+            timeBlock.textContent = data['P-L1']['info']['time'];
+        } 
+    } 
+    catch (error){
+        console.error('Ошибка', error);
+    }
+}
     </script>
 </body>
 </html>
