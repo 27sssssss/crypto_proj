@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <link href="https://fonts.cdnfonts.com/css/century-gothic-paneuropean" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <style>
 body {
-    background-color: rgb(12, 12, 12);
-    overflow-x: auto;
-    white-space: nowrap;
+    background-image: url('files123/page2.png');
     margin: 0;
     padding: 0;
     display: flex;
+    background-size: cover;
 }
 
 @font-face {
-        font-family: 'Century Gothic';
-        src: url('/files123/CENTURYGOTHIC.TTF') format('truetype');
-        font-weight: normal;
+        font-family: 'Century Gothic Paneuropean';
+        src: url(../files123/CENTURYGOTHIC.TTF);
+        font-weight: 100
 }
 
 @font-face {
-        font-family: 'Century Gothic';
-        src: url('/files123/CENTURYGOTHIC_BOLD.TTF') format('truetype');
-        font-weight: bold;
-    }
+        font-family: 'Century Gothic Paneuropean';
+        src: url(../files123/CENTURYGOTHIC_BOLD.TTF);
+        font-weight: 800;
+}
 .header-wrapper {
     margin-left: 40px;
 }
@@ -47,39 +46,49 @@ body {
     border-top-left-radius: 6px; 
     border-top-right-radius: 6px;
 }
+#TableData{
+    width: 1200px;
+    height: 600px;
+    overflow-y: scroll; 
+}
 
 th {
     padding: 13px 5px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom:15px;
     padding-left: 40px;
     padding-right: 20px;
     font-size: 20px;
-    font-family: Century Gothic;
+    font-family: Century Gothic Paneuropean;
     font-weight: 800;
     color: #D1D1D1;
     text-align: left;
 }
 
 table {
-    background-color: #0F0F0F;
-    margin-left: 19px;
+    background-color: #131313be;
+    margin-left: 50px;
     border-radius: 51px; 
     border-collapse: collapse;
     margin-bottom:30px;
 }
 
+
 thead {
+    opacity: 1;
     height: 40px;
-    background-color: #2E2E2E;
+    background-color: #2e2e2e;
     border-top-left-radius: 51px;
     border-top-right-radius: 51px;
 }
 
 thead th:first-child {
+    opacity: 1;
     border-top-left-radius: 51px; 
 }
 
 thead th:last-child {
+    opacity: 1;
     border-top-right-radius: 51px; 
 }
 td {
@@ -88,7 +97,7 @@ td {
     padding-left: 40px;
     padding-right: 30px;
     font-size: 20px;
-    font-family: Century Gothic;
+    font-family: Century Gothic Paneuropean;
     font-weight: 800;
     color: rgb(242, 240, 240);
     text-align: center;
@@ -98,21 +107,21 @@ td {
 h1 {
     text-align: center;
     font-size: 25px;
-    font-family: Century Gothic;
+    font-family: Century Gothic Paneuropean;
     font-weight: 700;
     color: white;
 }
 
 .timebutton{
     text-align: left;
-    margin-left: 80px ;
+    margin-left: 140px ;
     background: #2E2E2E;
     border-radius: 35px;
     height: 67px;
     width: 430px;
     color: rgba(255, 255, 255, 0.80); 
     font-size: 20px; 
-    font-family: Century Gothic; 
+    font-family: Century Gothic Paneuropean; 
     font-weight: 700;
 }
 .timebutton2{
@@ -120,17 +129,19 @@ h1 {
     height: 67px;
     width: 380px;
     color: rgba(254, 254, 254, 0.8);
-    font-family: Century Gothic;
+    font-family: Century Gothic Paneuropean;
     font-size: 20px; 
-    margin-left: 450px;
+    margin-left: 510px;
     border-radius: 35px;
     margin-top: -88px;
     font-weight: 800px;
+    align-items: center;
 }
 .totaldata {
     display: inline-flex;
     gap: 10px;
     margin-bottom: 10px;
+    padding: 10px 10px 10px 14px;
 }
 
 .totaldata div {
@@ -148,13 +159,15 @@ h1 {
     align-items: center;
 }
 .container {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 950px;
+    margin: 0 auto; 
+    margin-top: 30px;
+    height: 120vh;
 }
 
 .ltc {
     font-weight: 50;
-    font-family: Century Gothic;
+    font-family: Century Gothic Paneuropean;
 }
 
 .card {
@@ -170,12 +183,32 @@ h1 {
 .card-wrapper {
     margin-top: -20px;
     gap: 0px;
-    margin-left: -20px;
+    margin-left: 0px;
     align-items: center;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
 }
+#TableData::-webkit-scrollbar {
+    opacity: 0;
+    width: 1px;
+}
+
+#TableData::-webkit-scrollbar-thumb {
+    background: #88888800;
+    border-radius: 6px;
+}
+
+#TableData::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+    border-radius: 6px;
+}
+
+
+#TableData::-webkit-scrollbar-thumb:hover {
+    background: #55555500;
+}
+
 
 .card p {
     margin: 5px 0;
@@ -191,14 +224,14 @@ h1 {
 .cardheader{
     color: white; 
     font-size: 16px; 
-    font-family: Century Gothic; 
+    font-family: Century Gothic Paneuropean; 
     font-weight: 700; 
 }
 .cardghz{
     opacity: 0.80;
     color: #D1D1D1;
     font-size: 10px;
-    font-family: Century Gothic;
+    font-family: Century Gothic Paneuropean;
     font-weight: 50;
 }
 .celcius{
@@ -221,53 +254,71 @@ h1 {
     height: 0px; 
     border: 0.5px white solid
 }
+button{
+    margin-left: -100px;
+            font-family: Century Gothic Paneuropean; 
+            text-align: center; color: #323232; 
+            font-size: 30px; 
+            font-weight: 700; 
+            line-height: 28px; 
+            padding-left: 68px; 
+            padding-right: 68px; 
+            padding-top: 23px; 
+            padding-bottom: 23px; 
+            background: white; 
+            border-radius: 38px; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 10px; 
+            display: inline-flex; 
+            transition: background-color 0.5s ease, padding 1s ease, color 1s ease;
+        }
 </style>
 <body>
     <div class="container">
-    <h1>Параметры установок</h1>
     <div id= "totaldata">
-        <div style="width: 240px;" id="ghs">
+        <div style="width: 250px;" id="ghs">
             <img style= "margin-left: 7px;  width: 40px;" src="files123/2847001.png" alt="">
-            <div id="ghscount" style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 700;
+            <div id="ghscount" style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic Paneuropean; font-weight: 700;
             "></div>
             <div>
-                <p style="margin-top:3px; margin-left: -13px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: 50;">
+                <p style="margin-top:3px; margin-left: -13px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic Paneuropean; font-weight: 50;">
                     Gh/s
                 </p>
-                <p style="margin-bottom:-5px;  margin-left: -25px; color: #D1D1D1; font-size: 10px; font-family: Century Gothic; font-weight: 400;">
+                <p style="margin-bottom:-5px;  margin-left: -25px; color: #D1D1D1; font-size: 10px; font-family: Century Gothic Paneuropean; font-weight: 400;">
                     LTC
                 </p>
             </div>
         </div>
-        <div style="width: 165px;" id="wat">
+        <div style="width: 180px;" id="wat">
             <img style="margin-left: 3px; margin-top: 1px; width: 28px" src="files123/plug.png" alt="">
-            <div id="watcount" style="font-weight: 800; margin-left: -3px;text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 800"></div>
+            <div id="watcount" style="font-weight: 800; margin-left: -3px;text-align: center; color: white; font-size: 26px; font-family: Century Gothic Paneuropean; font-weight: 800"></div>
             <div>
-                <p style="margin-left: -10px; margin-top:1px; text-decoration: underline; text-align: left; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: lighter;">
+                <p style="margin-left: -10px; margin-top:1px; text-decoration: underline; text-align: left; color: #D1D1D1; font-size: 15px; font-family: Century Gothic Paneuropean; font-weight: lighter;">
                     KW
                 </p>
-                <p style=" margin-bottom: -6px; margin-left: -26px; color: white; font-size: 8px; font-family: Century Gothic; font-weight: 400;">
+                <p style=" margin-bottom: -6px; margin-left: -26px; color: white; font-size: 8px; font-family: Century Gothic Paneuropean; font-weight: 400;">
                     POWER
                 </p>
             </div>
         </div>
-        <div style="width: 170px;" id="usd">
+        <div style="width: 190px;" id="usd">
             <img style=" margin-bottom: -3px ;margin-left: 9px; width: 25px; margin-top: -5px;" src="files123/wallet.png" alt="">
-            <div style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 800" id="usdcount"></div>
+            <div style="text-align: center; color: white; font-size: 26px; font-family: Century Gothic Paneuropean; font-weight: 800" id="usdcount"></div>
             <div>
-                <p style="margin-left: -10px;  margin-top:3px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: 400;">
+                <p style="margin-left: -10px;  margin-top:3px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic Paneuropean; font-weight: 400;">
                     USD
                 </p>
-                <p style="margin-bottom:0.5px;  margin-left: -28px; color:#D1D1D1; font-size: 12px; font-family: Century Gothic; font-weight: 400;">
+                <p style="margin-bottom:0.5px;  margin-left: -28px; color:#D1D1D1; font-size: 12px; font-family: Century Gothic Paneuropean; font-weight: 400;">
                     день
                 </p>
             </div>
         </div>
         <div style="width: 180px" id="devices">
             <img style="margin-left:10px; width: 25px; color: white;" src="files123/pickaxe.png" alt="">
-            <div style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic; font-weight: 800" id="devicescount"></div>
+            <div style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic Paneuropean; font-weight: 800" id="devicescount"></div>
             <div>
-                <p style="margin-left: -20px; color: #D1D1D1; font-size: 15px; font-family: Century Gothic; font-weight: 400;">
+                <p style="margin-left: -20px; color: #D1D1D1; font-size: 15px; font-family: Century Gothic Paneuropean; font-weight: 400;">
                     MINING
                 </p>
             </div>
@@ -275,13 +326,15 @@ h1 {
     </div>
     <div id = "TableData"></div>
     <div class="timebutton">
-        <p style="padding-top: 20px; padding-left: 40px;" >Последнее время обновления:</p>
+        <p style="padding-top: 24px; padding-left: 40px;" >Последнее время обновления:</p>
     </div>
     <div style="margin-top: -67px" class="timebutton2">
-        <img style= "margin-bottom: -33px; margin-left: 20px;  width: 40px;" src="files123/clock.png" alt="">
-        <p id="timep" style="font-size: 25px; text-align: center; margin-top: -6px"></p>
+        <img style= "margin-bottom: -36px; margin-left: 20px;  width: 40px;" src="files123/clock.png" alt="">
+        <p id="timep" style="font-size: 25px; text-align: center; margin-top: -1px"></p>
     </div>
+    <a style="font-size: 20px; color: #D1D1D1; font-family: Century Gothic Paneuropean; padding-left: 50vh; margin-top: 30px; display: block;" href="additionalData.html">Дополнительные данные</a>
 </div>
+
 
     <script>
         setInterval(getTime,1000);
@@ -302,6 +355,10 @@ h1 {
             totalCount += 1;
             const deviceData = data[deviceName];
             let Hrate = deviceData.mining && deviceData.mining.hashrate ? deviceData.mining.hashrate.hashrate : 0;
+            let HrateUnit = deviceData.mining && deviceData.mining.hashrate ? deviceData.mining.hashrate.hashrate_unit : 0;
+            if (HrateUnit === 'MH'){
+                Hrate = Hrate/1000;
+            }
             let Power = deviceData.hardware ? deviceData.hardware.reduce((total = 0, hardware) => {return total + (hardware.power || 0);}, 0): 0;
             let Usd  = deviceData.revenue ? deviceData.revenue.usd_day : 0;
             totalHrate += Hrate;
@@ -340,6 +397,7 @@ h1 {
             const tableBody = document.createElement('tbody');
             for (let deviceName in data) {
             const deviceData = data[deviceName];
+            let HrateUnit = deviceData.mining && deviceData.mining.hashrate ? deviceData.mining.hashrate.hashrate_unit : 0;
             let mintemp = minTemp(deviceData.hardware);
             let maxtemp = maxTemp(deviceData.hardware);
             let maxvent = maxVent(deviceData.hardware);
@@ -347,7 +405,7 @@ h1 {
             const deviceRow = document.createElement('tr');
             deviceRow.innerHTML = `
                 <td style="">${deviceName}</td>
-                <td>${Hrate.toFixed(1)}<span class="settings"> GH/z</span></td>
+                <td>${Hrate.toFixed(1)}<span class="settings"> ${HrateUnit}/z</span></td>
                 <td>${mintemp} °C - ${maxtemp} °C</td>
                 <td>${maxvent} <span class="settings">RPM</span></td>
                 <td>${totalPower(deviceData)} <span class="settings"> W</span></td>`;
@@ -356,7 +414,7 @@ h1 {
         const cardWrapper = document.createElement('div');
         cardWrapper.classList.add('card-wrapper');
         for (let antminer of deviceData.hardware) {
-            const card = makeCard(antminer);
+            const card = makeCard(antminer, HrateUnit);
             cardWrapper.appendChild(card);
         }
         const cardRow = document.createElement('tr');
@@ -412,7 +470,7 @@ h1 {
         }, 0)
         : 0;
         }
-    function makeCard(data){
+    function makeCard(data, HrateUnit){
         let card = document.createElement("div");
         card.classList.add("card");
         let greenchop = document.createElement("div");
@@ -422,7 +480,7 @@ h1 {
         title.classList.add("card-title");
         card.appendChild(title);
         let speedUnit = document.createElement("span");
-        speedUnit.textContent = " Gh/z";
+        speedUnit.textContent = ` ${HrateUnit}/z`;
         speedUnit.classList.add("cardghz");
         if (data.speed !== undefined) {
             let speedValue = document.createElement("span");
@@ -464,7 +522,13 @@ h1 {
         const data = await reply.json();
         const timeBlock = document.getElementById('timep');
         if (timeBlock){
-            timeBlock.textContent = data['P-L1']['info']['time'];
+            for (const key in data){
+                if (data[key].info.status == "online"){
+                    timeBlock.textContent = (data[key].info.time);
+                    return 0;
+                }
+            }
+            timeBlock.textContent = 'Все устройства отключены';
         } 
     } 
     catch (error){

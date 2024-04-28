@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.cdnfonts.com/css/century-gothic-paneuropean" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(files123/00999.png);
+            background-size: cover;
+            transition: opacity 0.5s ease; /* Плавный переход для свойства opacity */
+        }
+        body.fade-out {
+            opacity: 0;
+        }
+    @font-face {
+        font-family: 'Century Gothic Paneuropean';
+        src: url(../files123/CENTURYGOTHIC.TTF);
+        font-weight: 100
+}
+        .content {
+            text-align: center;
+            font-family: Century Gothic Paneuropean;
+            transition: transform 0.5s ease;
+            align-items: center;
+        }
+        button{
+            margin-left: -100px;
+            font-family: Century Gothic Paneuropean; 
+            text-align: center; color: #323232; 
+            font-size: 30px; 
+            font-weight: 700; 
+            line-height: 28px; 
+            padding-left: 68px; 
+            padding-right: 68px; 
+            padding-top: 23px; 
+            padding-bottom: 23px; 
+            background: white; 
+            border-radius: 38px; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 10px; 
+            display: inline-flex; 
+            transition: background-color 0.5s ease, padding 1s ease, color 1s ease;
+        }
+        button:hover{
+            background-color: #2CBD77;
+            padding: 25px 75px;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div style="text-align: center; color: white; font-size: 110px; font-weight: 700; line-height: 104px; word-wrap: break-word;">Сводка данных<br/>крипто-фермы</div>
+        <div style="width: 772px; height: 114px; text-align: center; color: white; font-size: 20px; font-weight: 400; line-height: 33.42px; word-wrap: break-word; margin-top: 50px;">Ваш источник информации о крипто-фермах. Узнавайте актуальные данные, статистику и тренды о добыче криптовалюты на различных фермах в одном месте.</div>
+        <button id="redirectBut">
+            К таблице
+        </button>
+    </div>
+    <script>
+        document.getElementById("redirectBut").addEventListener("click", function(){
+            setTimeout(function(){window.location.href = "crypto.html"}, 300)});
+        document.querySelector('button').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(function() {
+                window.location.href = "новая_страница.html";
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

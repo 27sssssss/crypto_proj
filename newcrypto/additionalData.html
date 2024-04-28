@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="files123/main.css">
+</head>
+<body>
+    <h1>Дополнительные данные по устройствам</h1>
+    <div id="addData"></div>
+    <script>
+        async function fulltable() {
+            try {
+                const response = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+                const data = await response.json();
+                const tableData = document.getElementById('addData');
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const headRow = document.createElement('tr');
+                headRow.innerHTML = `
+                    <th>Устройство</th>
+                    <th>Кол-во монет</th>
+                    <th>Цена</th>
+                    <th>В день</th>
+                `;
+                thead.appendChild(headRow);
+                table.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                for (let deviceName in data) {
+                    const deviceData = data[deviceName];
+                    let hashrate = deviceData.mining && deviceData.mining.hashrate ? deviceData.mining.hashrate.hashrate : 0;
+                    let amount = deviceData.revenue ? deviceData.revenue.coin : 0;
+                    let price = deviceData.revenue ? deviceData.revenue.cprice : 0;
+                    let output = deviceData.revenue ? deviceData.revenue.coin * deviceData.revenue.cprice : 0;
+                    const deviceRow = document.createElement('tr');
+                    deviceRow.innerHTML = `
+                        <td>${deviceName}</td>
+                        <td>${amount.toFixed(4)}</td>
+                        <td>${price.toFixed(4)}</td>
+                        <td>${output.toFixed(4)}</td>
+
+                    `;
+                    tbody.appendChild(deviceRow);
+                }
+                table.appendChild(tbody);
+                tableData.innerHTML = '';
+                tableData.appendChild(table);
+            } catch (error) {
+                console.error('Error displaying table', error);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function(event) {
+            fulltable();
+        });
+    </script>
+</body>
+</html>
