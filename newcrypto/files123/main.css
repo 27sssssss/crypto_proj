@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Century Gothic123321';
+    src: url(../files123/CENTURYGOTHIC.TTF);
+    font-weight: 100
+}
+@font-face {
+    font-family: 'Century GothicBald123321';
+    src: url(../files123/CENTURYGOTHIC_BOLD.TTF);
+    font-weight: 800;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background-color: #fcfcfc;
+	color: #ffffff;
+	font-family: Century Gothic123321;
+    font-size: 10px;
+	font-weight: 200;
+    background-image: url(page2.png);
+    background-repeat: no-repeat;
+    align-items: center;
+    background-size:cover;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+h1{
+    padding-bottom: 6vh;
+    padding-top: 6vh;
+    font-size: 4.5vh;
+    text-align: center;
+}
+
+thead {
+    opacity: 1;
+    height: 40px;
+    background-color: #2e2e2e;
+    border-top-left-radius: 51px;
+    border-top-right-radius: 51px;
+}
+thead th:first-child {
+    opacity: 1;
+    border-top-left-radius: 51px; 
+}
+
+thead th:last-child {
+    opacity: 1;
+    border-top-right-radius: 51px; 
+}
+table {
+    background-color: #131313be;
+    margin-left: 25px;
+    border-radius: 51px; 
+    border-collapse: collapse;
+    margin-bottom:30px;
+}
+
+th {
+    padding: 13px 5px;
+    padding-top: 15px;
+    padding-bottom:15px;
+    padding-left: 40px;
+    padding-right: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #D1D1D1;
+    text-align: center;
+}
+td {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+    padding-right: 30px;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(242, 240, 240);
+    text-align: center;
+}
