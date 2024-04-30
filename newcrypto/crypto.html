@@ -13,6 +13,7 @@ body {
     padding: 0;
     display: flex;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 @font-face {
@@ -147,7 +148,7 @@ h1 {
 .totaldata div {
     margin: 5px;
     width: 230px;
-    height: 40px;
+    max-height: 40px;
     display: inline-flex;
     background-color: #2E2E2E;
     color: white;
@@ -162,7 +163,7 @@ h1 {
     max-width: 950px;
     margin: 0 auto; 
     margin-top: 30px;
-    height: 120vh;
+    max-height: 120vh;
 }
 
 .ltc {
@@ -273,6 +274,13 @@ button{
             display: inline-flex; 
             transition: background-color 0.5s ease, padding 1s ease, color 1s ease;
         }
+        @media only screen and (max-width: 768px) {
+    body {
+        transform: scale(0.6);
+        transform-origin: top;
+    }
+}
+
 </style>
 <body>
     <div class="container">
