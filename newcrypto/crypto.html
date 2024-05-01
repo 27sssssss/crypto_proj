@@ -48,7 +48,7 @@ body {
     border-top-right-radius: 6px;
 }
 #TableData{
-    width: 1200px;
+    width: 1000px;
     height: 600px;
     overflow-y: scroll; 
 }
@@ -255,52 +255,39 @@ h1 {
     height: 0px; 
     border: 0.5px white solid
 }
-button{
-    margin-left: -100px;
-            font-family: Century Gothic Paneuropean; 
-            text-align: center; color: #323232; 
-            font-size: 30px; 
-            font-weight: 700; 
-            line-height: 28px; 
-            padding-left: 68px; 
-            padding-right: 68px; 
-            padding-top: 23px; 
-            padding-bottom: 23px; 
-            background: white; 
-            border-radius: 38px; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 10px; 
-            display: inline-flex; 
-            transition: background-color 0.5s ease, padding 1s ease, color 1s ease;
-        }
-        @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     body {
-        transform: scale(0.6);
+        zoom: 0.5;
         transform-origin: top;
+        height: 1000px;
+    }
+    .container {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
+
 
 </style>
 <body>
     <div class="container">
     <div id= "totaldata">
         <div style="width: 250px;" id="ghs">
-            <img style= "margin-left: 7px;  width: 40px;" src="files123/2847001.png" alt="">
-            <div id="ghscount" style="text-align: center; color: white; font-size: 31px; font-family: Century Gothic Paneuropean; font-weight: 700;
+            <img style= "margin-left: 7px;  width: 40px;" src="files123/weather.png" alt="">
+            <div id="ghscount" style="text-align: center; margin-top: 10px; color: white; font-size: 31px; font-family: Century Gothic Paneuropean; font-weight: 700;
             "></div>
             <div>
-                <p style="margin-top:3px; margin-left: -13px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic Paneuropean; font-weight: 50;">
-                    Gh/s
+                <p style="text-decoration: underline; margin-top: 2px; margin-left: -13px;text-align: center; color: #D1D1D1; font-size: 20px; font-family: Century Gothic Paneuropean; font-weight: 50;">
+                    °С
                 </p>
-                <p style="margin-bottom:-5px;  margin-left: -25px; color: #D1D1D1; font-size: 10px; font-family: Century Gothic Paneuropean; font-weight: 400;">
-                    LTC
+                <p style="margin-bottom:-10px;  margin-left: -26px; color: #D1D1D1; font-size: 10px; font-family: Century Gothic Paneuropean; font-weight: 400;">
+                    %hum
                 </p>
             </div>
         </div>
         <div style="width: 180px;" id="wat">
             <img style="margin-left: 3px; margin-top: 1px; width: 28px" src="files123/plug.png" alt="">
-            <div id="watcount" style="font-weight: 800; margin-left: -3px;text-align: center; color: white; font-size: 26px; font-family: Century Gothic Paneuropean; font-weight: 800"></div>
+            <div id="watcount" style="font-weight: 800; margin-left: -3px;text-align: center; color: white; font-size: 31px; font-family: Century Gothic Paneuropean; font-weight: 800"></div>
             <div>
                 <p style="margin-left: -10px; margin-top:1px; text-decoration: underline; text-align: left; color: #D1D1D1; font-size: 15px; font-family: Century Gothic Paneuropean; font-weight: lighter;">
                     KW
@@ -312,7 +299,7 @@ button{
         </div>
         <div style="width: 190px;" id="usd">
             <img style=" margin-bottom: -3px ;margin-left: 9px; width: 25px; margin-top: -5px;" src="files123/wallet.png" alt="">
-            <div style="text-align: center; color: white; font-size: 26px; font-family: Century Gothic Paneuropean; font-weight: 800" id="usdcount"></div>
+            <div style="text-align: center; color: white; font-size: 28px; font-family: Century Gothic Paneuropean; font-weight: 800" id="usdcount"></div>
             <div>
                 <p style="margin-left: -10px;  margin-top:3px; text-decoration: underline; text-align: center; color: #D1D1D1; font-size: 15px; font-family: Century Gothic Paneuropean; font-weight: 400;">
                     USD
@@ -376,7 +363,6 @@ button{
                 workingCount += 1;
             }
         }
-        document.getElementById("ghscount").textContent = totalHrate.toFixed(1);
         document.getElementById("watcount").textContent = `${totalPower}`;
         document.getElementById("usdcount").textContent = `${totalUsd.toFixed(2)}`;
         document.getElementById("devicescount").textContent = `${workingCount}/${totalCount}`;
@@ -543,6 +529,19 @@ button{
         console.error('Ошибка', error);
     }
 }
+    async function getWeather(){
+        const token = '7641094710b56cc3afcb9af0d49b7a25';
+        const apiData = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=pavlovsk&appid=7641094710b56cc3afcb9af0d49b7a25'
+        const response = await fetch(apiData);
+        const data = await response.json();
+        console.log(data, "data");
+        const temperature = data.main.temp;
+        const humidity = data.main.humidity;
+        console.log(temperature);
+        console.log(humidity);
+        document.getElementById("ghscount").textContent = `${temperature}/${humidity}`;
+    }
+    getWeather();
     </script>
 </body>
 </html>
