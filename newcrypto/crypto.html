@@ -335,12 +335,13 @@ h1 {
 
 
     <script>
+        const token = '23m9xdi3g1xz';
         setInterval(getTime,1000);
         setInterval(showalldata(),50000);
         setInterval(fulltable(),50000); 
         async function showalldata(){
         try{
-        const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+        const reply = await fetch(`https://api.minerstat.com/v2/stats/${token}`);
         const data = await reply.json();
         const showData = document.getElementById("totaldata");
         showData.classList.add("totaldata");
@@ -376,7 +377,7 @@ h1 {
 }
         async function fulltable(){
             try {
-            const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+            const reply = await fetch(`https://api.minerstat.com/v2/stats/${token}`);
             const data = await reply.json();
             const tableData = document.getElementById('TableData');
             const table = document.createElement('table');
@@ -515,7 +516,7 @@ h1 {
     }
     async function getTime() {
     try {
-        const reply = await fetch('https://api.minerstat.com/v2/stats/23m9xdi3g1xz');
+        const reply = await fetch(`https://api.minerstat.com/v2/stats/${token}`);
         const data = await reply.json();
         const timeBlock = document.getElementById('timep');
         if (timeBlock){
